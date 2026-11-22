@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" role="img" aria-labelledby="t">
+  <title id="t">NetScope symbol</title>
+  <g fill="none" stroke="#3987D8" stroke-width="3">
+    <circle cx="24" cy="24" r="18"/>
+    <path d="M24 2v8M24 38v8M2 24h8M38 24h8"/>
+  </g>
+  <circle cx="24" cy="24" r="2.5" fill="#36A7B8"/>
+</svg>

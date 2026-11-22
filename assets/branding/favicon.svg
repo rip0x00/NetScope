@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" role="img" aria-labelledby="t">
+  <title id="t">NetScope</title>
+  <!-- Simplified mark for 16 px rendering: ring removed, ticks lengthened, stroke raised to 4. -->
+  <g fill="none" stroke="#3987D8" stroke-width="4">
+    <path d="M24 3v12M24 33v12M3 24h12M33 24h12"/>
+  </g>
+  <circle cx="24" cy="24" r="3.5" fill="#36A7B8"/>
+</svg>
