@@ -1,5 +1,67 @@
 # Development Log
 
+## 2026-11-22 — Final consistency pass before the first Release
+
+A documentation and artifact consistency pass, performed after
+publication and before any tag or Release (neither was created;
+both still await the user's final approval).
+
+**Linux status unified.** The README platform table called Linux
+"Supported" while the PROJECT_STATUS capability matrix still
+listed it as `in-progress` (and its status-value definitions had
+no `supported` value at all). One status now applies in both:
+**Linux is supported — core, CLI and desktop implemented and
+tested on Linux — with the standing caveat that desktop GUI
+verification is offscreen-only (including a fresh-venv
+install/launch check) and the desktop has not yet been run on a
+physical display.** PROJECT_STATUS gained the `supported` status
+value, the Linux matrix row was updated, and two stale items were
+corrected in passing: the Phase G summary no longer says
+publication is pending (it records the 25-commit publication and
+the pending release decision), and the Phase C summary now notes
+the desktop suite grew from 14 to 20 tests in Phase F.
+
+**CHANGELOG completed.** The `[Unreleased]` section previously
+listed only the foundation. CHANGELOG.md now carries a
+**Versioning** statement — v0.1.0 is the first ecosystem /
+repository release; components stay independently versioned
+(core 0.1.0, CLI 0.1.0, desktop 0.2.0, Android 0.4.0) — and a
+complete `[0.1.0]` entry describing the core engine, the CLI,
+the desktop and the Android app with their test counts and the
+platform limitations (Android not device-tested; Windows
+unverified; macOS documented-only). The README Status section
+points to the Versioning note.
+
+**Release assets verified.** All seven proposed assets exist
+with the intended versions. Wheel/sdist internal metadata
+(`METADATA` / `PKG-INFO`) matches every filename; the desktop
+wheel is confirmed to be the post-F-02 build (it contains
+`netscope_desktop/assets/app-icon.svg`); the APK was re-verified
+with `apksigner verify` (signer CN=NetScope, O=NetScope
+contributors, cert SHA-256
+`1e60fca28c1451784e5ae9e1431560f6bcd6f52222387ab56b07a4457681b0ff`)
+and `aapt2 dump badging` (package `com.netscope.app`,
+versionName 0.4.0, versionCode 1, targetSdk 34, exactly the
+INTERNET and ACCESS_NETWORK_STATE permissions).
+
+| File | Size (bytes) | SHA-256 |
+|---|---|---|
+| netscope_core-0.1.0-py3-none-any.whl | 41,413 | `4e1f584f3dc3ee8c9e2589a6f8d4949cb5c66e547aa130aa862af5688eef705a` |
+| netscope_core-0.1.0.tar.gz | 44,771 | `9e6bd734240b5a19ec71ba24ff37917aec32dfd94fbde83ea1cf229c19d8a316` |
+| netscope_cli-0.1.0-py3-none-any.whl | 10,741 | `e4005bc686238472e8fed4d239feb4018afe8a20d9f542a7ebcd6d4d1ae35027` |
+| netscope_cli-0.1.0.tar.gz | 13,208 | `18a7a91468f60cdc54403971edaecd22d51e7f0fabf106ee193d2e889a0d9792` |
+| netscope_desktop-0.2.0-py3-none-any.whl | 34,800 | `055e5e8f7ca49215ad34fd0ce62a2f4430183e9c75af1f5957a6e9eb483d073d` |
+| netscope_desktop-0.2.0.tar.gz | 35,133 | `8b6e1fa387c41e8f3b7714268ef02387232c9196715c4dc5bbe6fe8d5c127db5` |
+| NetScope.apk (Android 0.4.0) | 860,840 | `c6f310a7a2cea9af69c2892c9481f8f1ff1848003270b13c2510261bf1db5eab` |
+
+**Draft release notes** for "NetScope v0.1.0 — first public
+release" were written to `dist/RELEASE_NOTES_v0.1.0.md` (a local
+release-prep file in `dist/`, outside the published tree). They
+state the test evidence as 131 Python tests (87 core + 24 CLI +
+20 desktop) and, separately, 59 Android JVM tests; carry all
+platform limitations; and include the checksum table above. No
+tag or Release was created.
+
 ## 2026-11-22 — Phase G step 2: publication to GitHub
 
 The repository was published on 2026-11-22 at

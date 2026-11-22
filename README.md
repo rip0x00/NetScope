@@ -15,11 +15,14 @@ desktop application and the Android application are implemented; see
 [ROADMAP.md](ROADMAP.md) for what comes next. The current state of
 every platform is tracked in [PROJECT_STATUS.md](PROJECT_STATUS.md)
 and summarised below. A platform is listed as supported only after it
-has been implemented and tested on that platform.
+has been implemented and tested on that platform. Releases are
+versioned at the repository level — v0.1.0 is the first ecosystem
+release — while each component keeps its own independent version;
+see the Versioning note in [CHANGELOG.md](CHANGELOG.md).
 
 | Platform | Status |
 |---|---|
-| Linux | Supported — core, CLI and desktop implemented and tested on Linux (desktop verified offscreen and via a fresh-venv install; not yet run on a physical display) |
+| Linux | Supported — core, CLI and desktop implemented and tested on Linux; desktop GUI verification is offscreen-only (including a fresh-venv install/launch check) and the desktop has not yet been run on a physical display |
 | Windows 10/11 | Unverified — same Python codebase as Linux; never executed on Windows |
 | macOS | Documented only — unverified; no build host available |
 | Android | Implemented — native Kotlin app; 59 JVM tests pass and the release-signed APK builds, but it has not been run on a device or emulator, so it is not yet listed as supported |

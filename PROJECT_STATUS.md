@@ -79,13 +79,15 @@ the tool or a probe, not assumed.
 
 ## Platform capability matrix
 
-Status values: `implemented` (built and verified), `in-progress`, `planned`
-(designed, not built), `documented-only` (contracts and documentation, no
-implementation scheduled in this environment).
+Status values: `supported` (implemented and tested on that platform),
+`implemented` (built and verified, but platform support not yet claimed),
+`in-progress`, `planned` (designed, not built), `documented-only`
+(contracts and documentation, no implementation scheduled in this
+environment).
 
 | Platform | Tier | Status | Notes |
 |---|---|---|---|
-| Linux | 1 | in-progress | Shared Python core implemented and tested in the Linux dev environment (87 fixture tests, live smoke on the sandbox network). CLI implemented and verified (24 tests passing; status/diagnose/dns/latency smoke commands run on the sandbox network, 2026-11-22). Desktop implemented and verified offscreen (eleven pages): 20 desktop tests passing; the real entry point launches (the start-up `HistoryStore.prune` deadlock and the About-page `netscope_core.VERSION` AttributeError found by the first verification were fixed and regression-tested); navigation of all 11 pages, Diagnostics core integration with SQLite history write, MainWindow theme switching, history clear-all and PDF export all verified offscreen on the sandbox network. Never run on a physical display. Packaging (Phase F): wheels + sdists for core/CLI/desktop built and verified via a fresh-venv install/launch/uninstall cycle (see `docs/qa/PHASE_F_AUDIT.md`). The core is written portably (no POSIX-only APIs), but it has only been executed on Linux. |
+| Linux | 1 | supported | Supported — core, CLI and desktop implemented and tested on Linux; desktop GUI verification is offscreen-only and the desktop has not yet been run on a physical display. Detail: shared Python core implemented and tested in the Linux dev environment (87 fixture tests, live smoke on the sandbox network). CLI implemented and verified (24 tests passing; status/diagnose/dns/latency smoke commands run on the sandbox network, 2026-11-22). Desktop implemented and verified offscreen (eleven pages): 20 desktop tests passing; the real entry point launches (the start-up `HistoryStore.prune` deadlock and the About-page `netscope_core.VERSION` AttributeError found by the first verification were fixed and regression-tested); navigation of all 11 pages, Diagnostics core integration with SQLite history write, MainWindow theme switching, history clear-all and PDF export all verified offscreen on the sandbox network. Never run on a physical display. Packaging (Phase F): wheels + sdists for core/CLI/desktop built and verified via a fresh-venv install/launch/uninstall cycle (see `docs/qa/PHASE_F_AUDIT.md`). The core is written portably (no POSIX-only APIs), but it has only been executed on Linux. |
 | Windows 10/11 | 1 | planned | Same Python codebase; cannot be executed in this environment, so verification is limited to code review and CI definitions until a Windows runner is available. |
 | macOS | 1 | documented-only | PySide6 route is viable in principle; no macOS host exists here to build or verify. Not claimed as supported. |
 | Android | 1 | implemented | Framework Kotlin via the manual pipeline (see ADR-002); Jetpack Compose deferred. App 0.4.0 (versionCode 1): six sections over a Kotlin port of the core (DNS wire codec, resolver comparison, TCP/TLS/HTTP probes, core statistics, ten-code verdicts, troubleshooting rules, TTL-limited TCP route trace via `android.system.Os`), SQLite history, SharedPreferences settings, design tokens and reticle identity applied. Verified in the build environment: 59 JVM unit tests pass; the release-signed APK (860,840 bytes) passes `apksigner verify` and badging inspection. **Not run on a device or emulator** — runtime behaviour is verified by compilation and API review only, so this is "implemented", not yet "supported". |
@@ -133,8 +135,9 @@ kept consistent with it.
   fixed under a follow-up approval (the count moved to a
   `_count_unlocked()` helper under the existing strict lock;
   `__version__` used in the About page), with regression tests
-  added: the desktop suite is now **14 passed**, with core (87) and
-  CLI (24) regressions green. The follow-up verification launched
+  added: the desktop suite passed with **14 tests** (20 after the
+  Phase F regression tests were added), with core (87) and CLI (24)
+  regressions green. The follow-up verification launched
   the real entry point (window up, clean exit — previously a hang),
   navigated all 11 pages, switched themes through the main window,
   ran the Diagnostics page against the real core with the run
@@ -180,8 +183,7 @@ kept consistent with it.
   Android APK's signature and badging were re-verified. Windows
   and macOS packaging is **not verified** (no such environment;
   portable in principle, untested in fact).
-- **Phase G — GitHub publication (authorized 2026-11-22;
-  pre-publication review complete, publication pending):** the
+- **Phase G — GitHub publication (complete, 2026-11-22):** the
   repository was reviewed before any upload — full inventory,
   `.gitignore` audit (gaps closed: `*.db`, `.env`, `*.log`, `*.whl`,
   `*.tar.gz`, `*.idsig`, `*.jar`, `.venv*/`), secrets scan (no
@@ -193,9 +195,14 @@ kept consistent with it.
   were stale and were corrected to match this matrix; the core
   README's portability claim was qualified to Linux-tested). The
   exact upload set — 112 files — and the exclusion list are in
-  `docs/qa/PUBLISH_MANIFEST.md`. Publication proceeds through the
-  browser only; a version tag and GitHub Release require separate
-  approval with proposed notes and assets.
-- **Next:** the browser publication step (Phase G step 2); run the
-  Android app on a device; the remaining Phase F low/info findings
-  are optional follow-ups.
+  `docs/qa/PUBLISH_MANIFEST.md`. The repository was then published
+  through the browser only: all 112 files in five upload batches
+  plus one evidence commit — 25 commits on `main` — with the final
+  tree verified and the README rendering; 0 tags, no Releases, no
+  integrations. A version tag and GitHub Release require separate
+  approval with proposed notes and assets; the v0.1.0 proposal
+  (draft notes plus seven assets with SHA-256 checksums, prepared
+  in the final consistency pass) awaits that approval.
+- **Next:** the user's decision on the proposed v0.1.0 tag/Release;
+  run the Android app on a device; the remaining Phase F low/info
+  findings are optional follow-ups.
