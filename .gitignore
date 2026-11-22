@@ -1,0 +1,60 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+build/
+dist/
+.pytest_cache/
+.ruff_cache/
+
+# Qt / PySide
+*.qmlc
+*.jsc
+ui_*.py
+resources_rc.py
+
+# Android / Kotlin / Java
+*.apk
+*.aab
+*.dex
+*.class
+.gradle/
+local.properties
+keystore.properties
+
+# Signing material — never commit
+*.keystore
+*.jks
+keystore-password*.txt
+*.p12
+*.pem
+
+# Build tools
+packaging/build/
+*.spec.bak
+
+# Editors / OS
+.idea/
+.vscode/
+*.swp
+.DS_Store
+Thumbs.db
+
+# NetScope local data
+*.sqlite3
+*.db
+*.db-journal
+*.db-wal
+*.db-shm
+
+# Added at the Phase G pre-publication review (2026-11-22)
+.env
+.env.*
+*.log
+*.whl
+*.tar.gz
+*.idsig
+*.jar
+.venv*/
