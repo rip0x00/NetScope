@@ -1,5 +1,31 @@
 # Development Log
 
+## 2026-11-22 — Phase G step 2: publication to GitHub
+
+The repository was published on 2026-11-22 at
+https://github.com/rip0x00/NetScope (public, owner rip0x00,
+description "Understand Your Network. Take Control."), created
+empty — no README, .gitignore or license initialized by GitHub.
+
+**Method.** Browser workflow only (the GitHub web upload UI,
+per-directory commits to `main`), per the user's standing rule for
+this project — no connectors, no `git push`. All 112 files of
+`docs/qa/PUBLISH_MANIFEST.md` were uploaded in five batches
+(root + .github; apps/android; apps/cli + assets; apps/desktop;
+docs + shared), totalling 24 commits on `main`. The final tree was
+verified on the repository home page: all 16 top-level entries
+present, the README renders, and the directory structure is
+preserved at every path.
+
+**Boundaries kept.** No version tag and no GitHub Release were
+created (the Releases section is empty); no integrations, apps or
+webhooks were enabled and no other repository settings were
+changed. Creating a tag or Release remains subject to the user's
+separate approval of the proposed version, release notes and exact
+assets. This entry and the matching `PROJECT_STATUS.md` update are
+uploaded as a follow-up commit so the published continuity
+documents carry the publication evidence themselves.
+
 ## 2026-11-22 — Phase G step 1: pre-publication review
 
 The user explicitly authorized Phase G (GitHub release preparation

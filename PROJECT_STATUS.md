@@ -8,7 +8,8 @@ network). Phase C (desktop) is complete and verified in this
 environment: the two startup blockers found by its 2026-11-22
 verification (a history-store deadlock and an About-page version
 attribute error) were fixed the same day and the follow-up
-verification passed — 14 desktop tests, a real launch through the
+verification passed — 20 desktop tests (14 at Phase C, plus 6
+Phase F regression tests), a real launch through the
 entry point, navigation of all eleven pages, core integration,
 theme switching, history clear/prune and PDF export, all offscreen.
 Phase E (Android) is
@@ -23,13 +24,18 @@ and verified through a fresh-venv install/launch/uninstall cycle.
 Windows and macOS packaging is not verified. See
 `docs/qa/PHASE_F_AUDIT.md` and the Phase F entry in
 `DEVELOPMENT_LOG.md`.
-Phase G (GitHub publication) was authorized on 2026-11-22 and its
-pre-publication review is complete: the publish set is 112 files
-(`docs/qa/PUBLISH_MANIFEST.md`), the secrets scan is clean, stale
-platform claims in the README and app docs were corrected, and the
-test baseline of the exact tree is 131 passing (core 87, CLI 24,
-desktop 20). The browser publication step itself has not happened
-yet; no version tag or GitHub Release is authorized at this point.
+Phase G (GitHub publication) was authorized on 2026-11-22. Its
+pre-publication review found the publish set to be 112 files
+(`docs/qa/PUBLISH_MANIFEST.md`), the secrets scan clean, and stale
+platform claims in the README and app docs corrected; the test
+baseline of the exact tree is 131 passing (core 87, CLI 24,
+desktop 20). The repository was published the same day at
+https://github.com/rip0x00/NetScope (public): all 112 files were
+uploaded through the browser workflow only, in 24 commits on
+`main`, and the final tree was verified on the repository home
+page with the README rendering. No version tag or GitHub Release
+exists; creating one requires the user's separate approval of the
+proposed version, release notes and exact assets.
 
 ## Environment audit
 
