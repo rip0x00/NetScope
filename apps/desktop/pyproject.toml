@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "netscope-desktop"
+version = "0.2.0"
+description = "NetScope desktop application (PySide6) over the netscope-core diagnostic engine."
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+dependencies = ["netscope-core", "PySide6>=6.6"]
+
+[project.scripts]
+netscope-desktop = "netscope_desktop.app:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+"netscope_desktop.assets" = ["*.svg"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
